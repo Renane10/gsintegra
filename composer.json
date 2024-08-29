@@ -4,7 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Renane10\\Gsintegra\\": "src/"
+            "App\\": "App/"
         }
     },
     "authors": [

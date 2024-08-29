@@ -33,10 +33,6 @@ class ComposerStaticInitfaf6448cd1cc84963087134ffb12d549
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Config\\' => 25,
         ),
-        'R' => 
-        array (
-            'Renane10\\Gsintegra\\' => 19,
-        ),
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
@@ -69,6 +65,10 @@ class ComposerStaticInitfaf6448cd1cc84963087134ffb12d549
             'Cake\\Database\\' => 14,
             'Cake\\Core\\' => 10,
             'Cake\\Chronos\\' => 13,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
         ),
     );
 
@@ -112,10 +112,6 @@ class ComposerStaticInitfaf6448cd1cc84963087134ffb12d549
         'Symfony\\Component\\Config\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/config',
-        ),
-        'Renane10\\Gsintegra\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
         ),
         'Psr\\SimpleCache\\' => 
         array (
@@ -176,6 +172,10 @@ class ComposerStaticInitfaf6448cd1cc84963087134ffb12d549
         'Cake\\Chronos\\' => 
         array (
             0 => __DIR__ . '/..' . '/cakephp/chronos/src',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App',
         ),
     );
 

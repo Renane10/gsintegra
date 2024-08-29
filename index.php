@@ -23,6 +23,12 @@ if ($_SERVER['HTTP_HOST'] === 'localhost') {
     }
 }
 
+// Cria o despachante de rotas
+$dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
+    $r->addRoute('GET', '/', 'LoginController@showLogin'); // Página de login
+    $r->addRoute('POST', '/login', 'LoginController@processLogin'); // Processamento do login
+});
+
 // Despacha a rota
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 
@@ -36,10 +42,13 @@ switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
-        if (is_callable($handler)) {
-            call_user_func_array($handler, $vars);
-        } else {
-            require __DIR__ . "/$handler.php";
-        }
+        list($controllerName, $methodName) = explode('@', $handler);
+
+        // Namespace do controlador
+        $controllerClass = 'App\\Controllers\\' . $controllerName;
+
+        // Instancia o controlador
+        $controller = new $controllerClass();
+        call_user_func_array([$controller, $methodName], $vars);
         break;
 }

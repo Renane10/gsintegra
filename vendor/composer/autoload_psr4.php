@@ -16,7 +16,6 @@ return array(
     'Symfony\\Component\\Filesystem\\' => array($vendorDir . '/symfony/filesystem'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Symfony\\Component\\Config\\' => array($vendorDir . '/symfony/config'),
-    'Renane10\\Gsintegra\\' => array($baseDir . '/src'),
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
@@ -32,4 +31,5 @@ return array(
     'Cake\\Database\\' => array($vendorDir . '/cakephp/database'),
     'Cake\\Core\\' => array($vendorDir . '/cakephp/core'),
     'Cake\\Chronos\\' => array($vendorDir . '/cakephp/chronos/src'),
+    'App\\' => array($baseDir . '/App'),
 );
