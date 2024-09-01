@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'renane10/gsintegra',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '38780252b3b1ae27573db0a6b81c4818c79991bd',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -153,9 +153,9 @@
             'dev_requirement' => false,
         ),
         'renane10/gsintegra' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '38780252b3b1ae27573db0a6b81c4818c79991bd',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
