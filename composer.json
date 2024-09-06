@@ -1,11 +1,14 @@
 {
     "name": "renane10/gsintegra",
-    "description": "software para integrações da gstech",
+    "description": "software para integrações",
     "type": "project",
     "autoload": {
         "psr-4": {
             "App\\": "App/"
-        }
+        },
+        "files": [
+            "App/Helpers/helpers.php" 
+        ]
     },
     "authors": [
         {

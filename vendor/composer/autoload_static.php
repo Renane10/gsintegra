@@ -17,6 +17,7 @@ class ComposerStaticInitfaf6448cd1cc84963087134ffb12d549
         '948ad5488880985ff1c06721a4e447fe' => __DIR__ . '/..' . '/cakephp/utility/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        'c835a5a7c354373d15d2643be8410ba5' => __DIR__ . '/../..' . '/App/Helpers/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (

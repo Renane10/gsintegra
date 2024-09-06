@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/route.php';
+require __DIR__ . '/db.php'; // Inclui a conexão com o banco de dados
 
 // Carrega o .env
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -48,7 +48,7 @@ switch ($routeInfo[0]) {
         $controllerClass = 'App\\Controllers\\' . $controllerName;
 
         // Instancia o controlador
-        $controller = new $controllerClass();
+         $controller = new $controllerClass($pdo);
         call_user_func_array([$controller, $methodName], $vars);
         break;
 }
