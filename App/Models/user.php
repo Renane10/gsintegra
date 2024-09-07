@@ -24,10 +24,10 @@ class User
 
         // Verifica se o usuário foi encontrado e se a senha é válida
         if ($user && password_verify($password, $user['senha'])) {
-            return true;
+            return ['success' => true, 'user' => $user];
         }
 
-        return false;
+        return ['success' => false];
     }
 
     public function createUser($username, $email, $password,$permissao)

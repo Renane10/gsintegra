@@ -20,14 +20,17 @@ class LoginController extends Controller
 
     public function processLogin()
     {
+        // Inicializa a sessão
+        session_start();
         // Lógica para processar o login
-        $username = $_POST['username'] ?? '';
-        $password = $_POST['password'] ?? '';
+        $username = $_POST['username'] ?: '';
+        $password = $_POST['password'] ?: '';
         // Passa a conexão PDO ao criar uma instância de User
         $user = new User($this->pdo);
         $result = $user->validateUser($username, $password);
 
-        if ($result) {
+        if ($result['success']) {
+            $_SESSION['user'] = $result['user'];
             echo "Login successful!";
         } else {
             echo "Login failed!";

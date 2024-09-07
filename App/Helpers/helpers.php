@@ -1,24 +1,14 @@
 <?php
 function route($name, $params = [])
 {
-    // Defina a base URL para o subdiretório, se necessário
+    global $namedRoutes; // Usa as rotas nomeadas globais
     $baseUrl = ($_SERVER['HTTP_HOST'] === 'localhost') ? '/gsintegra' : '';
 
-    // Lista de rotas nomeadas e suas URLs
-    $routes = [
-        'login' => '/login',
-        'login_post' => '/login',
-        'home' => '/',
-        // Adicione outras rotas conforme necessário
-    ];
-
-    // Verifica se a rota existe
-    if (!isset($routes[$name])) {
+    if (!isset($namedRoutes[$name])) {
         throw new Exception("Rota {$name} não encontrada.");
     }
 
-    // Gera a URL final
-    $url = $baseUrl . $routes[$name];
+    $url = $baseUrl . $namedRoutes[$name];
 
     // Se houver parâmetros, adicione-os à URL
     if (!empty($params)) {
@@ -27,3 +17,12 @@ function route($name, $params = [])
 
     return $url;
 }
+
+/**
+ * Verifica se o usuario está logado
+ */
+function isLoggedIn()
+{
+    return isset($_SESSION['user']);
+}
+

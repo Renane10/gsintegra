@@ -1,6 +1,13 @@
 <?php
+// Exibir todos os erros e avisos
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/db.php'; // Inclui a conexão com o banco de dados
+
+session_start(); // Inicializa a sessão
 
 // Carrega o .env
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -23,14 +30,31 @@ if ($_SERVER['HTTP_HOST'] === 'localhost') {
     }
 }
 
-// Cria o despachante de rotas
-$dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/', 'LoginController@showLogin'); // Página de login
-    $r->addRoute('POST', '/login', 'LoginController@processLogin'); // Processamento do login
+$namedRoutes = []; // Armazenará as rotas nomeadas
+
+$dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) use (&$namedRoutes) {
+    // Definindo rotas e armazenando no array $namedRoutes
+    $namedRoutes['home'] = '/';
+    $r->addRoute('GET', '/', 'LoginController@showLogin');
+
+    $namedRoutes['login'] = '/login';
+    $r->addRoute('POST', '/login', 'LoginController@processLogin');
+
+    $namedRoutes['dashboard'] = '/dashboard';
+    $r->addRoute('GET', '/dashboard', 'DashboardController@showDashboard');
 });
 
 // Despacha a rota
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+
+// Verifica se o usuário está logado para rotas protegidas
+$protectedRoutes = ['/dashboard'];
+
+if (in_array($uri, $protectedRoutes) && !isset($_SESSION['user'])) {
+    // Se o usuário não estiver logado, redireciona para a página de login
+    header('Location: ' . route('home'));
+    exit;
+}
 
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::NOT_FOUND:
